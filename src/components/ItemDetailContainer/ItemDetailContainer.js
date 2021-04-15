@@ -1,0 +1,1 @@
+/// aca se une con ItemDetail
