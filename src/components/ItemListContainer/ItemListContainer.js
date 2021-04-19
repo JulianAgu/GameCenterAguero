@@ -1,8 +1,7 @@
-import {ItemList} from '../ItemList/ItemList'
+import {Products} from '../Item/Products'
 import React,{Component} from 'react';
-
-ItemList.map(item => console.log("Nombre del producto ", item.title));
-
+import ItemList from '../ItemList/ItemList'
+import './ItemListContainer.css';
 
 export default class ItemListContainer extends Component {
     constructor() {
@@ -15,7 +14,7 @@ export default class ItemListContainer extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.setState({
-                products: ItemList,
+                products: Products,
             })
         }, 2500)
 
@@ -24,12 +23,12 @@ export default class ItemListContainer extends Component {
       return (
         <div>
           <h2>Productos</h2>
-          <ul>
+          <ul className="CardContainer">
             {this.state.products.map(function (products) {
               return (
-                <li key={products.id}>
-                  {products.title}  - {products.price}
-                </li>
+                <div key={products.id}>
+                  <ItemList p={products} />
+                </div>
               );
             })}
           </ul>
@@ -37,6 +36,20 @@ export default class ItemListContainer extends Component {
       );
     }
 }
+
+
+ 
+
+
+
+
+
+// componentDidMount() {
+//         setTimeout(() => {
+//             this.setState({
+//                 products: ItemList,
+//             })
+//         }, 2500)
 
 
 

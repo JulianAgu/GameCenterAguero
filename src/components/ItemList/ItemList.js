@@ -1,23 +1,27 @@
-export const ItemList  = [
-    {
-      id: 1,
-      title: 'UFC 3',
-      description: "Bla bla bla",
-      price: 100,
-      pictureUrl: "ads"
-    },
-    {
-      id: 2,
-      title: 'Cyberpunk 2077',
-      description: "gregergnergnernge",
-      price: 200,
-      pictureUrl: "adxxxxxs"
-    },
-    {
-      id: 3,
-      title: "Assasin Creed Valhala",
-      description: "asdassds bla asd",
-      price: 300,
-      pictureUrl: "adeeeeees"
-    }
-  ];
+import React from 'react';
+import {Card, Image } from 'semantic-ui-react';
+import './ItemList.css';
+
+function ItemList({ p }) {
+  return (
+    <div className="asd">
+      {[p].map((p) => {
+        return (
+          <Card key={p.id}>
+            <Image src={p.pictureUrl} wrapped ui={false} />
+            <Card.Content>
+              <Card.Header>{p.title}</Card.Header>
+              <Card.Meta>
+                <span>{p.description}</span>
+              </Card.Meta>
+              <Card.Description>
+              </Card.Description>
+            </Card.Content>
+          </Card>
+        );
+      })}
+    </div>
+  );
+}
+
+export default ItemList;

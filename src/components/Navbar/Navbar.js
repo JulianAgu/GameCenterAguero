@@ -1,11 +1,13 @@
 import * as ReactBootStrap from "react-bootstrap";
 import CartIcon from "../CartIcon/CartIcon"
-
+import {Link} from 'react-router-dom'
 export default function Navbar(){
     return (
         <div>
             <ReactBootStrap.Navbar bg="dark" expand="lg">
+                <Link to="/">
                 <ReactBootStrap.Navbar.Brand href="#home" className="text-light"> Game Center </ReactBootStrap.Navbar.Brand>
+                </Link>
                 <ReactBootStrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <ReactBootStrap.Navbar.Collapse id="basic-navbar-nav">
                     <ReactBootStrap.Nav className="mr-auto">
