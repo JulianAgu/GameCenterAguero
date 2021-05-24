@@ -1,40 +1,45 @@
-import React, { useState } from 'react'
-import './ItemCount.css';
-import Button from '@material-ui/core/Button';
-import './ItemCount.css';
+import React from 'react';
+import './ItemCount.css'; 
+import { IoMdAddCircleOutline } from "react-icons/io";
+import { IoIosRemoveCircleOutline } from "react-icons/io";
 
 
-export const ItemCount = ({stock,initial}) => {
-    const[count,setCount] = useState(parseInt(initial));
+
+
+const ItemCount = ({ stock, initial, onAdd })=>{
     
-    const countAdder = () => {
-        if (count < stock){ 
-            setCount(count+1)
+    const[count,setCount] = React.useState(initial);
+    
+    const [showing, setShowing] = React.useState(false);
+
+
+    const countAdd = () =>{
+        if (count < stock){
+            setCount(count+1);
         }
     }
-    const countDecrease = () => {
-        if (count > initial) {
-            setCount(count-1)
+
+    const countRemove = () =>{
+        if (count > initial){
+            setCount(count-1);
         }
+    
     }
-    const onAdd = () => {
-        if (count <= stock) {
-            alert(`Has realizado una compra de ${count} producto/s.`)
-        }
-    }
-    return (
-        <div className="itemCount-container">
+    
+
+    return(
+        <>
+        <div className = "d-flex count">
+        <IoIosRemoveCircleOutline onClick = {countRemove}></IoIosRemoveCircleOutline>
             <p>{count}</p>
-            <div className="buttons-container">
-                <Button variant="contained" color="primary" onClick={countDecrease}> - </Button>
-                <Button variant="contained" color="primary" onClick={countAdder}> + </Button>
-            </div>
-            <div className="buttons-container">
-                <Button onClick={onAdd}>Agregar al Carrito </Button>
-            </div>
+        <IoMdAddCircleOutline onClick ={countAdd}></IoMdAddCircleOutline>    
         </div>
+   <button onClick={(e) => onAdd(e, count)} className="btn btn-color">Agregar al Carrito {count}</button>
+    
+
+        </>
+    
+        
     )
-}
-
-
-
+ }
+export default ItemCount;
