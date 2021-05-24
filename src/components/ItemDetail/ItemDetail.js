@@ -1,1 +1,0 @@
-// Se une con itemDetailContainer
